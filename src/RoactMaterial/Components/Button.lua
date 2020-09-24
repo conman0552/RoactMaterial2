@@ -46,6 +46,8 @@ Button.validateProps = t.interface({
 	InkColor3 = t.optional(t.Color3),
 	Flat = t.optional(t.boolean),
 	OnClicked = t.optional(t.callback),
+	OnHover = t.optional(t.callback),
+	OnLeave = t.optional(t.callback),
 })
 
 local WHITE_COLOR3 = Color3.new(1, 1, 1)
@@ -124,6 +126,8 @@ function Button:render()
 			ZIndex = 2,
 
 			[Roact.Event.MouseButton1Click] = self.props.OnClicked,
+			[Roact.Event.MouseEnter] = self.props.OnHover,
+			[Roact.Event.MouseLeave] = self.props.OnLeave,
 			[Roact.Ref] = function(rbx)
 				self._rbx = rbx
 			end,
